@@ -19,3 +19,6 @@ fasitResources:
   used:
   - alias: loadbalancer:veilarbmalverk
     resourceType: loadbalancerconfig
+  exposed:
+  - alias: malverkapi
+    path: /api
