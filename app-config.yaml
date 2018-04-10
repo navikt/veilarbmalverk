@@ -21,4 +21,5 @@ fasitResources:
     resourceType: loadbalancerconfig
   exposed:
   - alias: malverkapi
+    resourceType: restservice
     path: /api
