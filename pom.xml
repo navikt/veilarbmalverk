@@ -15,12 +15,20 @@
     <version>1</version>
     <packaging>war</packaging>
 
+    <properties>
+        <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
+    </properties>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+    </build>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>no.nav.sbl</groupId>
                 <artifactId>bom</artifactId>
-                <version>2018.03.23.08.42</version>
+                <version>2018.04.04.12.37</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -131,9 +139,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <finalName>veilarbmalverk</finalName>
-    </build>
 
 </project>
