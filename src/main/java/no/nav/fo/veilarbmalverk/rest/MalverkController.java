@@ -43,7 +43,7 @@ public class MalverkController {
     private HashMap<String, Object> extrapolate(HashMap<String, Object> template) {
         return template.mapValues((value) -> {
             if (value instanceof String) {
-                return extrapolator.extrapolate(((String) value));
+                return extrapolator.extrapolate((String) value);
             }
 
             return value;
