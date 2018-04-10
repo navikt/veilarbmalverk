@@ -1,0 +1,21 @@
+# ref https://raw.githubusercontent.com/nais/naisd/master/nais_example.yaml
+image: docker.adeo.no:5000/fo/veilarbmalverk
+replicas:
+  min: 2
+  max: 2
+  cpuThresholdPercentage: 50
+port: 8080
+healthcheck:
+  liveness:
+    path: veilarbmalverk/internal/isAlive
+    initialDelay: 60
+  readiness:
+    path: veilarbmalverk/internal/selftest
+    initialDelay: 60
+prometheus:
+  enabled: true
+  path: veilarbmalverk/internal/metrics
+fasitResources:
+  used:
+  - alias: loadbalancer:veilarbmalverk
+    resourceType: loadbalancerconfig
