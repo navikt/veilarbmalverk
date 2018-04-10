@@ -39,7 +39,7 @@ public class Extrapolator {
     }
 
     private String miljo(String dontCare) {
-        return getOptionalProperty("miljo", "environment.name")
+        return getOptionalProperty("miljo", "FASIT_ENVIRONMENT_NAME")
                 .map((env) -> "-"+env)
                 .orElse("");
     }
