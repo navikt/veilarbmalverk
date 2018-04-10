@@ -28,26 +28,4 @@ public class SerializerUtils {
         mapper.registerModule(new Jdk8Module());
         mapper.registerModule(new JSR310Module());
     }
-
-    @SneakyThrows
-    public static String serialize(Object object) {
-        return mapper.writeValueAsString(object);
-    }
-
-    public static Date deserializeToDate(String date) {
-        ZonedDateTime zdt = ZonedDateTime.of(LocalDateTime.parse(date), ZoneId.systemDefault());
-        Calendar cal = GregorianCalendar.from(zdt);
-        return cal.getTime();
-    }
-
-    public static LocalDateTime deserialize(Timestamp timestamp) {
-        return nullAllowed(timestamp, Timestamp::toLocalDateTime);
-    }
-
-    private static <S, T> T nullAllowed(S s, Function<S, T> mapper) {
-        if (s == null) {
-            return null;
-        }
-        return mapper.apply(s);
-    }
 }

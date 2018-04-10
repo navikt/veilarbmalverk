@@ -29,10 +29,6 @@ public class TimeUtils {
         return fastForwardToFirstWorkingDay(time);
     }
 
-    public static LocalDateTime relativeTime(String relative) {
-        return relativeTime(LocalDateTime.now(), relative);
-    }
-
     private static LocalDateTime fastForwardToFirstWorkingDay(LocalDateTime startDate) {
         LocalDateTime date = startDate;
 
@@ -58,10 +54,5 @@ public class TimeUtils {
                 return date;
             }
         };
-    }
-
-    public static LocalDateTime exponentialBackoff(int attempts, LocalDateTime now) {
-        long secondsToWait = (long) Math.pow(2, attempts);
-        return now.plusSeconds(secondsToWait);
     }
 }
