@@ -17,6 +17,10 @@
 
     <properties>
         <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
+        <sonar.coverage.exclusions>
+            **/java/Main.java,
+            **/config/ApplicationConfig.java
+        </sonar.coverage.exclusions>
     </properties>
 
     <build>
