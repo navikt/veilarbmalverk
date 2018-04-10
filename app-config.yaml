@@ -15,3 +15,7 @@ healthcheck:
 prometheus:
   enabled: true
   path: veilarbmalverk/internal/metrics
+fasitResources:
+  used:
+  - alias: loadbalancer:veilarbmalverk
+    resourceType: loadbalancerconfig
