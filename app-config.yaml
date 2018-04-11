@@ -22,4 +22,4 @@ fasitResources:
   exposed:
   - alias: malverkapi
     resourceType: restservice
-    path: /api
+    path: /veilarbmalverk/api
