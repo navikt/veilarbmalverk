@@ -40,12 +40,17 @@ class ExtrapolatorTest {
     @Test
     void should_support_environment() {
 //        Fungerer ikke på bekkci, pga `miljo` satt som miljøvariabel.
-//        System.setProperty("miljo", "");
-//        assertThat(extrapolator.extrapolate(prep("{miljo}"))).isEqualTo(prep(""));
-//        assertThat(extrapolator.extrapolate(prep("https://tjenester{miljo}.nav.no/test")))
-//                .isEqualTo(prep("https://tjenester.nav.no/test"));
+        System.setProperty("FASIT_ENVIRONMENT_NAME", "");
+        assertThat(extrapolator.extrapolate(prep("{miljo}"))).isEqualTo(prep(""));
+        assertThat(extrapolator.extrapolate(prep("https://tjenester{miljo}.nav.no/test")))
+                .isEqualTo(prep("https://tjenester.nav.no/test"));
 
-        System.setProperty("miljo", "t6");
+        System.setProperty("FASIT_ENVIRONMENT_NAME", "p");
+        assertThat(extrapolator.extrapolate(prep("{miljo}"))).isEqualTo(prep(""));
+        assertThat(extrapolator.extrapolate(prep("https://tjenester{miljo}.nav.no/test")))
+                .isEqualTo(prep("https://tjenester.nav.no/test"));
+
+        System.setProperty("FASIT_ENVIRONMENT_NAME", "t6");
         assertThat(extrapolator.extrapolate(prep("{miljo}"))).isEqualTo(prep("-t6"));
         assertThat(extrapolator.extrapolate(prep("https://tjenester{miljo}.nav.no/test")))
                 .isEqualTo(prep("https://tjenester-t6.nav.no/test"));
