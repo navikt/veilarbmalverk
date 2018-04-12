@@ -4,8 +4,7 @@ import io.vavr.collection.HashMap;
 import io.vavr.collection.Map;
 
 import java.time.Clock;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.Instant;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
@@ -32,11 +31,11 @@ public class Extrapolator {
     }
 
     private String relativeTime(String time) {
-        return TimeUtils.relativeTime(ZonedDateTime.now(clock), time).withZoneSameInstant(ZoneId.of("Z")).format(ISO8601);
+        return ISO8601.format(TimeUtils.relativeTime(Instant.now(clock), time));
     }
 
     private String now(String dontCare) {
-        return ZonedDateTime.now(clock).withZoneSameInstant(ZoneId.of("Z")).format(ISO8601);
+        return ISO8601.format(Instant.now(clock));
     }
 
     private String miljo(String dontCare) {
