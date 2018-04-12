@@ -3,14 +3,14 @@ package no.nav.fo.veilarbmalverk;
 import no.bekk.bekkopen.date.NorwegianDateUtil;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TimeUtils {
-    public static final DateTimeFormatter ISO8601 = DateTimeFormatter.ofPattern("yyy-MM-dd'T'HH:mm:ss.SSS");
+    public static final DateTimeFormatter ISO8601 = DateTimeFormatter.ofPattern("yyy-MM-dd'T'HH:mm:ss.SSSX");
     private static final String MONTHS = "m";
     private static final String WEEKS = "u";
     private static final String DAYS = "d";
@@ -18,8 +18,8 @@ public class TimeUtils {
 
     public static Pattern pattern = Pattern.compile("(?:now\\+)?(\\d+[" + MONTHS + WEEKS + DAYS + HOURS + "])");
 
-    static LocalDateTime relativeTime(LocalDateTime now, String relative) {
-        LocalDateTime time = now;
+    static ZonedDateTime relativeTime(ZonedDateTime now, String relative) {
+        ZonedDateTime time = now;
         Matcher matcher = pattern.matcher(relative);
 
         while (matcher.find()) {
@@ -29,8 +29,8 @@ public class TimeUtils {
         return fastForwardToFirstWorkingDay(time);
     }
 
-    private static LocalDateTime fastForwardToFirstWorkingDay(LocalDateTime startDate) {
-        LocalDateTime date = startDate;
+    private static ZonedDateTime fastForwardToFirstWorkingDay(ZonedDateTime startDate) {
+        ZonedDateTime date = startDate;
 
         while (!NorwegianDateUtil.isWorkingDay(Date.valueOf(date.toLocalDate()))) {
             date = date.plusDays(1);
@@ -39,7 +39,7 @@ public class TimeUtils {
         return date;
     }
 
-    private static Function<LocalDateTime, LocalDateTime> createTimeFunction(String time) {
+    private static Function<ZonedDateTime, ZonedDateTime> createTimeFunction(String time) {
         return (date) -> {
             int number = Integer.parseInt(time.substring(0, time.length() - 1), 10);
             if (time.endsWith(MONTHS)) {
