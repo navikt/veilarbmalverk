@@ -8,10 +8,10 @@ port: 8080
 healthcheck:
   liveness:
     path: veilarbmalverk/internal/isAlive
-    initialDelay: 60
+    initialDelay: 120
   readiness:
     path: veilarbmalverk/internal/selftest
-    initialDelay: 60
+    initialDelay: 120
 prometheus:
   enabled: true
   path: veilarbmalverk/internal/metrics
