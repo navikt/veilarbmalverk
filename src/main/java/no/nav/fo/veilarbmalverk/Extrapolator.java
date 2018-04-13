@@ -4,7 +4,7 @@ import io.vavr.collection.HashMap;
 import io.vavr.collection.Map;
 
 import java.time.Clock;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
@@ -31,17 +31,17 @@ public class Extrapolator {
     }
 
     private String relativeTime(String time) {
-        return TimeUtils.relativeTime(LocalDateTime.now(clock), time).format(ISO8601);
+        return ISO8601.format(TimeUtils.relativeTime(Instant.now(clock), time));
     }
 
     private String now(String dontCare) {
-        return LocalDateTime.now(clock).format(ISO8601);
+        return ISO8601.format(Instant.now(clock));
     }
 
     private String miljo(String dontCare) {
         return getOptionalProperty("FASIT_ENVIRONMENT_NAME", "miljo")
                 .filter((env) -> !"p".equals(env))
-                .map((env) -> "-"+env)
+                .map((env) -> "-" + env)
                 .orElse("");
     }
 
@@ -49,7 +49,7 @@ public class Extrapolator {
         if (s == null || "".equals(s)) {
             return s;
         }
-      
+
         int last = 0;
         StringBuilder sb = new StringBuilder();
 
