@@ -4,6 +4,7 @@ import no.nav.fo.veilarbmalverk.TemplateLoader;
 import org.junit.jupiter.api.Test;
 
 import javax.ws.rs.NotFoundException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -53,6 +54,28 @@ class MalverkControllerTest {
     @Test
     void getTemplate_should_throw_on_unknown_template() {
         assertThrows(NotFoundException.class, () -> controller.getTemplate("dummy-name"));
+    }
+
+    @Test
+    void should_filter() {
+        Map<String, Object> fraDatoFilter = new HashMap<>();
+        fraDatoFilter.put("fraDato", "{now}");
+
+        Map<String, Object> typeFilter = new HashMap<>();
+        typeFilter.put("type", "EGEN");
+
+        Map<String, Object> typeFilter2 = new HashMap<>();
+        typeFilter2.put("type", "SOKEAVTALE");
+
+        Map<String, Object> allMatchFilter = new HashMap<>();
+        Map<String, Object> noMatchFilter = new HashMap<>();
+        noMatchFilter.put("type", "NOMATCH");
+
+        assertThat(controller.filter(fraDatoFilter).size()).isEqualTo(4);
+        assertThat(controller.filter(typeFilter).size()).isEqualTo(3);
+        assertThat(controller.filter(typeFilter2).size()).isEqualTo(1);
+        assertThat(controller.filter(allMatchFilter).size()).isEqualTo(4);
+        assertThat(controller.filter(noMatchFilter).size()).isEqualTo(0);
     }
 
     private static boolean hasVariable(Object obj) {
