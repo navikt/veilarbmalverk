@@ -3,6 +3,7 @@
   "tittel": "Du må registrere jobbønskene dine på nav.no",
   "hensikt": "Bli synlig for arbeidsgivere",
   "oppfolging": "",
+  "beskrivelse": "Jobbønskene dine gir match når arbeidsgivere og veiledere i NAV leter etter kandidater i CV-basen vår. Du får også et automatisk abonnement på ledige stillinger",
   "lenke": "https://tjenester{miljo}.nav.no/sbl/nav_security_check?goto=/sbl/arbeid/endrePreferanser",
   "status": "BRUKER_ER_INTERESSERT",
   "fraDato": "{now}",
