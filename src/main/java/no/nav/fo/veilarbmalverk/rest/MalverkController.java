@@ -5,6 +5,7 @@ import io.vavr.Tuple2;
 import io.vavr.collection.HashMap;
 import io.vavr.control.Option;
 import no.nav.fo.veilarbmalverk.Extrapolator;
+import no.nav.fo.veilarbmalverk.FilterUtils;
 import no.nav.fo.veilarbmalverk.TemplateLoader;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +47,7 @@ public class MalverkController {
 
     @POST
     public List<Map<String, Object>> filter(Map<String, Object> filter) {
-        Predicate<Map<String, Object>> predicate = createFilter(filter);
+        Predicate<Map<String, Object>> predicate = FilterUtils.createFilter(filter);
         return TemplateLoader.list()
                 .map(TemplateLoader::get)
                 .filter(Option::isSingleValued)
@@ -54,14 +55,6 @@ public class MalverkController {
                 .map(io.vavr.collection.Map::toJavaMap)
                 .filter(predicate)
                 .toJavaList();
-    }
-
-    private Predicate<Map<String, Object>> createFilter(Map<String, Object> filter) {
-        return (Map<String, Object> template) -> filter
-                .keySet()
-                .stream()
-                .map((key) -> Tuple.of(filter.get(key), template.get(key)))
-                .allMatch((tuple) -> tuple._1.equals(tuple._2));
     }
 
     private HashMap<String, Object> extrapolate(HashMap<String, Object> template) {
