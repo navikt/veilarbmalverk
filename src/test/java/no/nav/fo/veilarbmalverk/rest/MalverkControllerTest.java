@@ -58,23 +58,11 @@ class MalverkControllerTest {
 
     @Test
     void should_filter() {
-        Map<String, Object> fraDatoFilter = new HashMap<>();
-        fraDatoFilter.put("fraDato", "{now}");
-
-        Map<String, Object> typeFilter = new HashMap<>();
-        typeFilter.put("type", "EGEN");
-
-        Map<String, Object> typeFilter2 = new HashMap<>();
-        typeFilter2.put("type", "SOKEAVTALE");
-
         Map<String, Object> allMatchFilter = new HashMap<>();
         Map<String, Object> noMatchFilter = new HashMap<>();
-        noMatchFilter.put("type", "NOMATCH");
+        noMatchFilter.put("type", "NOMATCH-1234");
 
-        assertThat(controller.filter(fraDatoFilter).size()).isEqualTo(4);
-        assertThat(controller.filter(typeFilter).size()).isEqualTo(3);
-        assertThat(controller.filter(typeFilter2).size()).isEqualTo(1);
-        assertThat(controller.filter(allMatchFilter).size()).isEqualTo(4);
+        assertThat(controller.filter(allMatchFilter).size()).isGreaterThan(0);
         assertThat(controller.filter(noMatchFilter).size()).isEqualTo(0);
     }
 
