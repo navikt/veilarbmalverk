@@ -52,6 +52,7 @@ public class MalverkController {
                 .map(TemplateLoader::get)
                 .filter(Option::isSingleValued)
                 .map(Option::get)
+                .map(this::extrapolate)
                 .map(io.vavr.collection.Map::toJavaMap)
                 .filter(predicate)
                 .toJavaList();
