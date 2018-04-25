@@ -17,6 +17,8 @@ prometheus:
   path: veilarbmalverk/internal/metrics
 fasitResources:
   used:
+  - alias: appdynamics
+    resourceType: applicationproperties
   - alias: loadbalancer:veilarbmalverk
     resourceType: loadbalancerconfig
   exposed:
