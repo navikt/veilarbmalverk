@@ -12,6 +12,9 @@ healthcheck:
   readiness:
     path: veilarbmalverk/internal/selftest
     initialDelay: 120
+resources:
+  limits:
+    cpu: 3
 prometheus:
   enabled: true
   path: veilarbmalverk/internal/metrics
@@ -25,3 +28,4 @@ fasitResources:
   - alias: veilarbmalverkAPI
     resourceType: restservice
     path: /veilarbmalverk/api
+team: oppfolging
