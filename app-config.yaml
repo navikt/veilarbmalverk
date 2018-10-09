@@ -15,6 +15,10 @@ healthcheck:
 resources:
   limits:
     cpu: 3
+    memory: 768Mi
+  requests:
+    cpu: 200m
+    memory: 512Mi
 prometheus:
   enabled: true
   path: veilarbmalverk/internal/metrics
