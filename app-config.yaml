@@ -10,7 +10,7 @@ healthcheck:
     path: veilarbmalverk/internal/isAlive
     initialDelay: 120
   readiness:
-    path: veilarbmalverk/internal/selftest
+    path: veilarbmalverk/internal/isReady
     initialDelay: 120
 resources:
   limits:
@@ -33,3 +33,5 @@ fasitResources:
     resourceType: restservice
     path: /veilarbmalverk/api
 team: oppfolging
+alertProfiles:
+  - common-java-modules
