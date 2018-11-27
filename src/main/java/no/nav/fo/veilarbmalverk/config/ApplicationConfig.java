@@ -8,19 +8,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("no.nav.fo.veilarbmalverk.rest")
 public class ApplicationConfig implements ApiApplication.NaisApiApplication {
+    public static final String APPLICATION_NAME = "veilarbmalverk";
 
     @Override
     public void configure(ApiAppConfigurator apiAppConfigurator) {
 
-    }
-
-    @Override
-    public String getApplicationName() {
-        return "veilarbmalverk";
-    }
-
-    @Override
-    public Sone getSone() {
-        return Sone.FSS;
     }
 }
