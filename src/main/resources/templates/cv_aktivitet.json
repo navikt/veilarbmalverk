@@ -5,7 +5,7 @@
   "hensikt": "Bli synlig for arbeidsgivere",
   "beskrivelse": "Det er viktig at du er synlig for flest mulige arbeidsgivere. Det blir du ved å registrere CV-en din på nav.no. NAV samarbeider med flere arbeidsgivere og bemannings- og rekrutteringsbransjen. Vi trenger også CV-en for å kunne følge opp aktivitetene dine på en god måte.",
   "lenke": "https://tjenester{miljo}.nav.no/sbl/nav_security_check?goto=/sbl/arbeid/endreCv",
-  "status": "BRUKER_ER_INTERESSERT",
+  "status": "GJENNOMFORES",
   "fraDato": "{now}",
   "tilDato": "{now + 8d}"
 }
