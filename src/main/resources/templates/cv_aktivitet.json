@@ -1,9 +1,9 @@
 {
   "malid": "1",
   "type": "EGEN",
-  "tittel": "Du må registrere CV-en din på nav.no",
+  "tittel": "Du må oppdatere CV-en din",
   "hensikt": "Bli synlig for arbeidsgivere",
-  "beskrivelse": "Det er viktig at du er synlig for flest mulige arbeidsgivere. Det blir du ved å registrere CV-en din på nav.no. NAV samarbeider med flere arbeidsgivere og bemannings- og rekrutteringsbransjen. Vi trenger også CV-en for å kunne følge opp aktivitetene dine på en god måte.",
+  "beskrivelse": "Det er viktig at du er synlig for flest mulige arbeidsgivere. NAV samarbeider med mange arbeidsgivere og bemanningsbransjen. Når du registrerer CV-en din på nav.no, kan vi følge deg opp på en god måte.",
   "lenke": "https://tjenester{miljo}.nav.no/sbl/nav_security_check?goto=/sbl/arbeid/endreCv",
   "status": "GJENNOMFORES",
   "fraDato": "{now}",
