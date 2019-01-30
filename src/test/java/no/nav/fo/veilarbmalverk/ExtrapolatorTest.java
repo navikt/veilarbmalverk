@@ -54,6 +54,15 @@ class ExtrapolatorTest {
         assertThat(extrapolator.extrapolate(prep("{miljo}"))).isEqualTo(prep("-t6"));
         assertThat(extrapolator.extrapolate(prep("https://tjenester{miljo}.nav.no/test")))
                 .isEqualTo(prep("https://tjenester-t6.nav.no/test"));
+
+        System.setProperty("FASIT_ENVIRONMENT_NAME", "q0");
+        assertThat(extrapolator.extrapolate(prep("https://blee{miljo}.nav.no/test")))
+                .isEqualTo(prep("https://blee-q.nav.no/test"));
+
+
+        System.setProperty("FASIT_ENVIRONMENT_NAME", "q");
+        assertThat(extrapolator.extrapolate(prep("https://blee{miljo}.nav.no/test")))
+                .isEqualTo(prep("https://blee-q.nav.no/test"));
     }
 
     @Test

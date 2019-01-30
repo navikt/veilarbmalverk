@@ -39,10 +39,21 @@ public class Extrapolator {
     }
 
     private String miljo(String dontCare) {
-        return getOptionalProperty("FASIT_ENVIRONMENT_NAME", "miljo")
-                .filter((env) -> !"p".equals(env))
-                .map((env) -> "-" + env)
-                .orElse("");
+        String miljo = getOptionalProperty("FASIT_ENVIRONMENT_NAME", "miljo").orElse("");
+        if (miljo.equals("")){
+            return "";
+        }
+
+        if (miljo.equals("p")){
+            return "";
+        }
+
+        if (miljo.equals("q0")){
+            return "-q";
+        }
+
+
+        return "-" + miljo;
     }
 
     public String extrapolate(String s) {
