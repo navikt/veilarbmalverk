@@ -5,7 +5,7 @@
   "hensikt": "Bli synlig for arbeidsgivere",
   "oppfolging": "",
   "beskrivelse": "I jobbprofilen gir du en kort oppsummering av kompetansen din, og hvilke ønsker du har for din neste jobb.",
-  "lenke": "https://tjenester{miljo}.nav.no/sbl/nav_security_check?goto=/sbl/arbeid/endrePreferanser",
+  "lenke": "https://arbeidsplassen{miljo}.nav.no/minside ",
   "status": "BRUKER_ER_INTERESSERT",
   "fraDato": "{now}",
   "tilDato": "{now + 8d}"
