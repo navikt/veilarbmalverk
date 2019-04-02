@@ -9,7 +9,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 class TemplateLoaderTest {
     @Test
     void should_read_file_into_class() {
-        Option<HashMap<String, Object>> cvAktivitet = TemplateLoader.get("cv_aktivitet");
+        Option<HashMap<String, Object>> cvAktivitet = TemplateLoader.get("cv_jobbprofil_aktivitet");
 
         assertThat(cvAktivitet.isSingleValued()).isTrue();
         assertThat(cvAktivitet.get().get("type").isSingleValued()).isTrue();
