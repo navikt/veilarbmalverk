@@ -2,7 +2,7 @@
   "malid": "5",
   "tittel": "Avtale om å søke jobber",
   "beskrivelse": "NAV forventer at du søker omtrent 5 stillinger i uken. Det er viktig at du søker på de jobbene du mener du er kvalifisert for. Det er også viktig å søke på mange stillinger, det øker sjansene dine til å finne en jobb.",
-  "antallStillingerSokes": 5,
+  "antallStillingerIUken": 5,
   "avtaleOppfolging": "",
   "status": "BRUKER_ER_INTERESSERT",
   "type": "SOKEAVTALE",
