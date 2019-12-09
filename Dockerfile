@@ -1,2 +1,2 @@
 FROM navikt/pus-nais-java-app
-COPY /target/veilarboppfolging /app
+COPY /target/veilarbmalverk /app
