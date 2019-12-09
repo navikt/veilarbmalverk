@@ -7,21 +7,13 @@
     <parent>
         <groupId>no.nav.common</groupId>
         <artifactId>mor-pom</artifactId>
-        <version>2018.12.04.22.26</version>
+        <version>1.2019.11.15-14.33-055ca1d05826</version>
     </parent>
 
     <groupId>no.nav.fo</groupId>
     <artifactId>veilarbmalverk</artifactId>
-    <version>1</version>
+    <version>2</version>
     <packaging>war</packaging>
-
-    <properties>
-        <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
-        <sonar.coverage.exclusions>
-            **/java/Main.java,
-            **/config/ApplicationConfig.java
-        </sonar.coverage.exclusions>
-    </properties>
 
     <build>
         <finalName>${project.artifactId}</finalName>
@@ -32,7 +24,7 @@
             <dependency>
                 <groupId>no.nav.common</groupId>
                 <artifactId>bom</artifactId>
-                <version>2018.12.04.22.26</version>
+                <version>${project.parent.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

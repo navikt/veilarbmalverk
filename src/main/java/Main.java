@@ -5,7 +5,7 @@ import no.nav.fo.veilarbmalverk.config.ApplicationConfig;
 public class Main {
 
     public static void main(String... args) {
-        ApiApp.startApp(ApplicationConfig.class, args);
+        ApiApp.runApp(ApplicationConfig.class, args);
     }
 
 }
