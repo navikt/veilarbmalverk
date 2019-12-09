@@ -22,7 +22,3 @@ mvn test
 # Henvendelser
 
 Spørsmål knyttet til koden eller prosjektet kan stilles via issues her på github.
-
-## For NAV-ansatte
-
-Interne henvendelser kan sendes via Slack i kanalen #team-oppfølging.
