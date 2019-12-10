@@ -1,0 +1,39 @@
+kind: Application
+apiVersion: nais.io/v1alpha1
+metadata:
+  name: veilarbmalverk
+  namespace: default
+  labels:
+    team: pto
+  cluster: prod-fss
+spec:
+  image: docker.pkg.github.com/navikt/veilarbmalverk/veilarbmalverk:{{version}}
+  ingresses:
+    - https://veilarbmalverk.nais.adeo.no
+    - https://app.adeo.no/veilarbmalverk
+  port: 8080
+  liveness:
+    path: veilarbmalverk/internal/isAlive
+    initialDelay: 120
+  readiness:
+    path: veilarbmalverk/internal/isReady
+    initialDelay: 120
+  prometheus:
+    enabled: true
+    path: veilarbmalverk/internal/metrics
+  replicas:
+    min: 2
+    max: 2
+    cpuThresholdPercentage: 50
+  resources:
+    limits:
+      cpu: "3"
+      memory: 768Mi
+    requests:
+      cpu: 200m
+      memory: 512Mi
+  vault:
+    enabled: true
+    paths:
+      - kvPath: /apikey/appdynamics/prod
+        mountPath: /var/run/secrets/nais.io/vault
