@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan("no.nav.fo.veilarbmalverk.rest")
-public class ApplicationConfig implements ApiApplication.NaisApiApplication {
+public class ApplicationConfig implements ApiApplication {
     public static final String APPLICATION_NAME = "veilarbmalverk";
 
     @Override

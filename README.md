@@ -1,5 +1,6 @@
 VeilarbMalverk
 ================
+[![CircleCI](https://circleci.com/gh/navikt/veilarbmalverk.svg?style=svg)](https://circleci.com/gh/navikt/veilarbmalverk)
 
 Enkel microservice som holder styr på maler som brukes innad i FO. 
 
@@ -22,7 +23,3 @@ mvn test
 # Henvendelser
 
 Spørsmål knyttet til koden eller prosjektet kan stilles via issues her på github.
-
-## For NAV-ansatte
-
-Interne henvendelser kan sendes via Slack i kanalen #team-oppfølging.
