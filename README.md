@@ -1,6 +1,5 @@
 VeilarbMalverk
 ================
-[![CircleCI](https://circleci.com/gh/navikt/veilarbmalverk.svg?style=svg)](https://circleci.com/gh/navikt/veilarbmalverk)
 
 Enkel microservice som holder styr på maler som brukes innad i FO. 
 
