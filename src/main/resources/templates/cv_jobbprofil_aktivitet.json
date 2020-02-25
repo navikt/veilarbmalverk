@@ -4,7 +4,7 @@
   "tittel": "Oppdater CV-en og jobbprofilen",
   "hensikt": "Bli synlig for arbeidsgivere",
   "beskrivelse": "Når du registrerer CV-en og jobbprofilen din, kan vi følge deg opp på en god måte. Du gjør deg synlig for arbeidsgivere som leter etter nye medarbeidere. NAV samarbeider med mange arbeidsgivere og bemanningsbransjen.",
-  "lenke": "https://arbeidsplassen{miljo}.nav.no/cv ",
+  "lenke": "https://arbeidsplassen{miljo}.nav.no/cv",
   "status": "GJENNOMFORES",
   "fraDato": "{now}",
   "tilDato": "{now + 8d}"
