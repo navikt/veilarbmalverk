@@ -1,9 +1,9 @@
-package no.nav.fo.veilarbmalverk.rest;
+package no.nav.veilarbmalverk.controller;
 
-import no.nav.fo.veilarbmalverk.TemplateLoader;
+import no.nav.veilarbmalverk.TemplateLoader;
 import org.junit.jupiter.api.Test;
+import org.springframework.web.server.ResponseStatusException;
 
-import javax.ws.rs.NotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +37,7 @@ class MalverkControllerTest {
 
     @Test
     void getTemplateExtrapolated_should_throw_on_unknown_template() {
-        assertThrows(NotFoundException.class, () -> controller.getTemplateExtrapolated("dummy-name"));
+        assertThrows(ResponseStatusException.class, () -> controller.getTemplateExtrapolated("dummy-name"));
     }
 
     @Test
@@ -53,7 +53,7 @@ class MalverkControllerTest {
 
     @Test
     void getTemplate_should_throw_on_unknown_template() {
-        assertThrows(NotFoundException.class, () -> controller.getTemplate("dummy-name"));
+        assertThrows(ResponseStatusException.class, () -> controller.getTemplate("dummy-name"));
     }
 
     @Test

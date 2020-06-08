@@ -1,4 +1,4 @@
-package no.nav.fo.veilarbmalverk;
+package no.nav.veilarbmalverk;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,4 @@
-package no.nav.fo.veilarbmalverk;
-
-import io.vavr.Tuple;
+package no.nav.veilarbmalverk;
 
 import java.util.Map;
 import java.util.function.Predicate;
@@ -11,8 +9,7 @@ public class FilterUtils {
             return (Map<String, Object> template) -> filter
                     .keySet()
                     .stream()
-                    .map((key) -> Tuple.of(filter.get(key), template.get(key)))
-                    .allMatch((tuple) -> tuple._1.equals(tuple._2));
+                    .allMatch(key -> filter.get(key).equals(template.get(key)));
         }
 
 }
