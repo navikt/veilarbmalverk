@@ -37,7 +37,11 @@ class MalverkControllerTest {
 
     @Test
     void getTemplateExtrapolated_should_throw_on_unknown_template() {
-        assertThrows(ResponseStatusException.class, () -> controller.getTemplateExtrapolated("dummy-name"));
+        Exception e = assertThrows(
+                ResponseStatusException.class,
+                () -> controller.getTemplateExtrapolated("dummy-name")
+        );
+        assertThat(e.getMessage()).isEqualTo("404 NOT_FOUND");
     }
 
     @Test
@@ -53,7 +57,12 @@ class MalverkControllerTest {
 
     @Test
     void getTemplate_should_throw_on_unknown_template() {
-        assertThrows(ResponseStatusException.class, () -> controller.getTemplate("dummy-name"));
+        Exception e = assertThrows(
+                ResponseStatusException.class,
+                () -> controller.getTemplate("dummy-name")
+        );
+
+        assertThat(e.getMessage()).isEqualTo("404 NOT_FOUND");
     }
 
     @Test

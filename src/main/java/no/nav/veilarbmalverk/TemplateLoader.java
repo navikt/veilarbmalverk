@@ -38,7 +38,7 @@ public class TemplateLoader {
     }
 
     private static Map<String, String> readAllFiles() {
-        return Optional.ofNullable(TemplateLoader.class.getResource("/templates"))
+        return Optional.ofNullable(VeilarbmalverkApp.class.getClassLoader().getResource("templates"))
                 .map(URL::getFile)
                 .map(File::new)
                 .map(TemplateLoader::listFiles)
