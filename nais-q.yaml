@@ -19,7 +19,7 @@ spec:
     initialDelay: 120
   prometheus:
     enabled: true
-    path: veilarbmalverk/internal/metrics
+    path: veilarbmalverk/internal/prometheus
   replicas:
     min: 2
     max: 2
