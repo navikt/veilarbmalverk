@@ -39,7 +39,7 @@ public class MalverkController {
     }
 
     @PostMapping
-    public List<Map<String, Object>> filter(Map<String, Object> filter) {
+    public List<Map<String, Object>> filter(@RequestBody Map<String, Object> filter) {
         Predicate<Map<String, Object>> predicate = FilterUtils.createFilter(filter);
         return TemplateLoader.list()
                 .stream()
