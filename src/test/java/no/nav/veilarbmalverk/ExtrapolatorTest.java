@@ -1,8 +1,10 @@
-package no.nav.fo.veilarbmalverk;
+package no.nav.veilarbmalverk;
 
 import org.junit.jupiter.api.Test;
 
-import java.time.*;
+import java.time.Clock;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 

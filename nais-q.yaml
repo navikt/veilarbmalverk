@@ -19,7 +19,7 @@ spec:
     initialDelay: 120
   prometheus:
     enabled: true
-    path: veilarbmalverk/internal/metrics
+    path: veilarbmalverk/internal/prometheus
   replicas:
     min: 2
     max: 2
@@ -36,3 +36,6 @@ spec:
     paths:
       - kvPath: /apikey/appdynamics/dev
         mountPath: /var/run/secrets/nais.io/vault
+  env:
+    - name: miljo
+      value: {{namespace}}

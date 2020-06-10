@@ -1,4 +1,4 @@
-package no.nav.fo.veilarbmalverk;
+package no.nav.veilarbmalverk;
 
 import org.junit.jupiter.api.Test;
 
@@ -7,8 +7,8 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
-import static no.nav.fo.veilarbmalverk.TimeUtils.ZULU;
-import static no.nav.fo.veilarbmalverk.TimeUtils.plus;
+import static no.nav.veilarbmalverk.TimeUtils.ZULU;
+import static no.nav.veilarbmalverk.TimeUtils.plus;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 class TimeUtilsTest {

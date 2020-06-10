@@ -1,4 +1,4 @@
-package no.nav.fo.veilarbmalverk;
+package no.nav.veilarbmalverk;
 
 import no.bekk.bekkopen.date.NorwegianDateUtil;
 

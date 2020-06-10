@@ -1,22 +1,20 @@
-package no.nav.fo.veilarbmalverk;
-
-import io.vavr.collection.HashMap;
-import io.vavr.collection.Map;
+package no.nav.veilarbmalverk;
 
 import java.time.Clock;
 import java.time.Instant;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static no.nav.fo.veilarbmalverk.TimeUtils.ISO8601;
-import static no.nav.sbl.util.EnvironmentUtils.getOptionalProperty;
+import static no.nav.common.utils.EnvironmentUtils.getOptionalProperty;
+import static no.nav.veilarbmalverk.TimeUtils.ISO8601;
 
 public class Extrapolator {
     private final Clock clock;
     private final Pattern pattern = Pattern.compile("\\{(.+?)\\}");
-    private final Map<Predicate<String>, Function<String, String>> rules = HashMap.of(
+    private final Map<Predicate<String>, Function<String, String>> rules = Map.of(
             regexPredicate(TimeUtils.pattern), this::relativeTime,
             equalsPredicate("now"), this::now,
             equalsPredicate("miljo"), this::miljo
@@ -40,15 +38,15 @@ public class Extrapolator {
 
     private String miljo(String dontCare) {
         String miljo = getOptionalProperty("FASIT_ENVIRONMENT_NAME", "miljo").orElse("");
-        if (miljo.equals("")){
+        if (miljo.equals("")) {
             return "";
         }
 
-        if (miljo.equals("p")){
+        if (miljo.equals("p")) {
             return "";
         }
 
-        if (miljo.equals("q0")){
+        if (miljo.equals("q0")) {
             return "-q";
         }
 
@@ -70,14 +68,12 @@ public class Extrapolator {
 
             String templatename = matcher.group(1).replaceAll("\\s", "");
 
-            Function<String, String> transformer = rules
-                    .find((rule) -> rule._1.test(templatename))
-                    .map((rule) -> rule._2)
-                    .getOrElse(Function.identity());
-
-            sb.append(transformer.apply(templatename));
-
-
+            rules.keySet()
+                    .stream()
+                    .filter(r -> r.test(templatename))
+                    .findFirst()
+                    .map(rules::get)
+                    .ifPresent(fun -> sb.append(fun.apply(templatename)));
             last = matcher.end();
         }
         if (last != s.length()) {
