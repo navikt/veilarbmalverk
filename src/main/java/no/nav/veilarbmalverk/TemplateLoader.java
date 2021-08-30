@@ -42,7 +42,6 @@ public class TemplateLoader {
     private static Map<String, String> readAllFiles() {
        return Map.of(
                "cv_jobbprofil_aktivitet", getResourceFileAsString("templates/cv_jobbprofil_aktivitet.json"),
-               "jobbsokerkompetanse_aktivitet", getResourceFileAsString("templates/jobbsokerkompetanse_aktivitet.json"),
                "soke_jobber_aktivitet", getResourceFileAsString("templates/soke_jobber_aktivitet.json")
        );
     }
