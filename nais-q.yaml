@@ -2,14 +2,15 @@ kind: Application
 apiVersion: nais.io/v1alpha1
 metadata:
   name: veilarbmalverk
-  namespace: {{namespace}}
+  namespace: pto
   labels:
     team: pto
 spec:
   image: docker.pkg.github.com/navikt/veilarbmalverk/veilarbmalverk:{{version}}
   ingresses:
-    - https://veilarbmalverk-{{namespace}}.nais.adeo.no
-    - https://app-{{namespace}}.adeo.no/veilarbmalverk
+    - https://veilarbmalverk-q1.nais.adeo.no
+    - https://app-q1.adeo.no/veilarbmalverk
+    - https://app-q1.dev.adeo.no/veilarbmalverk
   port: 8080
   liveness:
     path: veilarbmalverk/internal/isAlive
@@ -38,4 +39,4 @@ spec:
         mountPath: /var/run/secrets/nais.io/vault
   env:
     - name: miljo
-      value: {{namespace}}
+      value: q1
