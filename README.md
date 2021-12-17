@@ -22,3 +22,4 @@ mvn test
 # Henvendelser
 
 Spørsmål knyttet til koden eller prosjektet kan stilles via issues her på github.
+
