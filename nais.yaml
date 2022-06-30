@@ -10,7 +10,7 @@ spec:
   ingresses:
     - https://veilarbmalverk.nais.adeo.no
     - https://app.adeo.no/veilarbmalverk
-    - https://veilarbpersonflate.intern.nav.no/veilarbmalverk
+    - https://veilarbmalverk.prod-fss-pub.nais.io
   port: 8080
   liveness:
     path: veilarbmalverk/internal/isAlive
@@ -37,3 +37,15 @@ spec:
     paths:
       - kvPath: /apikey/appdynamics/prod
         mountPath: /var/run/secrets/nais.io/vault
+  accessPolicy:
+    inbound:
+      rules:
+        - application: veilarbpersonflate
+          namespace: poao
+          cluster: prod-gcp
+  azure:
+    application:
+      enabled: true
+      claims:
+        extra:
+          - "NAVident"

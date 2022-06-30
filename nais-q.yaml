@@ -11,7 +11,7 @@ spec:
     - https://veilarbmalverk-q1.nais.adeo.no
     - https://app-q1.adeo.no/veilarbmalverk
     - https://app-q1.dev.adeo.no/veilarbmalverk
-    - https://veilarbpersonflate.dev.intern.nav.no/veilarbmalverk
+    - https://veilarbmalverk.dev-fss-pub.nais.io
   port: 8080
   liveness:
     path: veilarbmalverk/internal/isAlive
@@ -38,6 +38,18 @@ spec:
     paths:
       - kvPath: /apikey/appdynamics/dev
         mountPath: /var/run/secrets/nais.io/vault
+  accessPolicy:
+    inbound:
+      rules:
+        - application: veilarbpersonflate
+          namespace: poao
+          cluster: dev-gcp
+  azure:
+    application:
+      enabled: true
+      claims:
+        extra:
+          - "NAVident"
   env:
     - name: miljo
       value: q1
