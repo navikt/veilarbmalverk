@@ -37,3 +37,15 @@ spec:
     paths:
       - kvPath: /apikey/appdynamics/prod
         mountPath: /var/run/secrets/nais.io/vault
+  accessPolicy:
+    inbound:
+      rules:
+        - application: veilarbpersonflate
+          namespace: poao
+          cluster: prod-gcp
+  azure:
+    application:
+      enabled: true
+      claims:
+        extra:
+          - "NAVident"
