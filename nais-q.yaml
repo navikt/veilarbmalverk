@@ -42,3 +42,9 @@ spec:
   env:
     - name: miljo
       value: q1
+  accessPolicy:
+    inbound:
+      rules:
+        - application: veilarbpersonflate
+          namespace: poao
+          cluster: dev-gcp
