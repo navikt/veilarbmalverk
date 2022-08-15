@@ -44,3 +44,9 @@ spec:
         - application: veilarbpersonflate
           namespace: poao
           cluster: prod-gcp
+  azure:
+    application:
+      enabled: true
+      claims:
+        extra:
+          - "NAVident"
