@@ -4,7 +4,7 @@ metadata:
   name: veilarbmalverk
   namespace: pto
   labels:
-    team: dab
+    team: pto
 spec:
   image: ghcr.io/navikt/veilarbmalverk/veilarbmalverk:{{version}}
   ingresses:
