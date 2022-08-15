@@ -2,14 +2,15 @@ kind: Application
 apiVersion: nais.io/v1alpha1
 metadata:
   name: veilarbmalverk
-  namespace: default
+  namespace: pto
   labels:
     team: pto
 spec:
-  image: docker.pkg.github.com/navikt/veilarbmalverk/veilarbmalverk:{{version}}
+  image: ghcr.io/navikt/veilarbmalverk/veilarbmalverk:{{version}}
   ingresses:
     - https://veilarbmalverk.nais.adeo.no
     - https://app.adeo.no/veilarbmalverk
+    - https://veilarbmalverk.intern.nav.no
     - https://veilarbmalverk.prod-fss-pub.nais.io
   port: 8080
   liveness:

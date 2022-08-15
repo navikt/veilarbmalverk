@@ -6,11 +6,12 @@ metadata:
   labels:
     team: pto
 spec:
-  image: docker.pkg.github.com/navikt/veilarbmalverk/veilarbmalverk:{{version}}
+  image: ghcr.io/navikt/veilarbmalverk/veilarbmalverk:{{version}}
   ingresses:
     - https://veilarbmalverk-q1.nais.adeo.no
     - https://app-q1.adeo.no/veilarbmalverk
     - https://app-q1.dev.adeo.no/veilarbmalverk
+    - https://veilarbmalverk.dev.intern.nav.no
     - https://veilarbmalverk.dev-fss-pub.nais.io
   port: 8080
   liveness:
@@ -38,6 +39,9 @@ spec:
     paths:
       - kvPath: /apikey/appdynamics/dev
         mountPath: /var/run/secrets/nais.io/vault
+  env:
+    - name: miljo
+      value: q1
   accessPolicy:
     inbound:
       rules:
@@ -50,6 +54,3 @@ spec:
       claims:
         extra:
           - "NAVident"
-  env:
-    - name: miljo
-      value: q1
