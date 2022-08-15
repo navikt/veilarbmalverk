@@ -10,6 +10,7 @@ spec:
   ingresses:
     - https://veilarbmalverk.nais.adeo.no
     - https://app.adeo.no/veilarbmalverk
+    - https://veilarbmalverk.intern.nav.no
   port: 8080
   liveness:
     path: veilarbmalverk/internal/isAlive
