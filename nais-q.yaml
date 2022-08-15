@@ -2,9 +2,9 @@ kind: Application
 apiVersion: nais.io/v1alpha1
 metadata:
   name: veilarbmalverk
-  namespace: dab
+  namespace: pto
   labels:
-    team: dab
+    team: pto
 spec:
   image: ghcr.io/navikt/veilarbmalverk/veilarbmalverk:{{version}}
   ingresses:
