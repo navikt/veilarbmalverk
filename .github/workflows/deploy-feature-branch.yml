@@ -1,12 +1,16 @@
-name: Prod
+name: Deploy branch to dev
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+
 env:
   IMAGE_TAG: ${{ github.sha }}
   IMAGE: ghcr.io/${{ github.repository }}/veilarbmalverk
   PRINT_PAYLOAD: true
+
+concurrency:
+  group: deploy_feature_branch
+  cancel-in-progress: true
+
 jobs:
   test-build-and-push:
     name: Test, build and push
@@ -34,8 +38,8 @@ jobs:
           context: .
           push: true
           tags: ${{ env.IMAGE }}:${{ env.IMAGE_TAG }}
-  deploy-prod:
-    name: Deploy application to prod
+  deploy-dev:
+    name: Deploy application to dev
     needs: test-build-and-push
     runs-on: ubuntu-latest
     steps:
@@ -45,6 +49,6 @@ jobs:
         uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: prod-fss
-          RESOURCE: nais.yaml
+          CLUSTER: dev-fss
+          RESOURCE: nais-q.yaml
           VAR: version=${{ env.IMAGE_TAG }}
