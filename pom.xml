@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>2.6.0</version>
         <relativePath/>
     </parent>
 
@@ -18,7 +18,7 @@
     <description>Microservice som holder styr på maler</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <common.version>2.2020.10.13_14.48-80e4c2dc5856</common.version>
         <springfox.version>2.9.2</springfox.version>
     </properties>
@@ -86,10 +86,9 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-        <!--  Temporær override for å kunne bygge med java 17 jdk -->
-            <version>1.18.22</version>
             <optional>true</optional>
         </dependency>
+
 
         <!-- test -->
         <dependency>
