@@ -6,7 +6,7 @@ import java.time.Clock;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class ExtrapolatorTest {
     private final ZonedDateTime now = ZonedDateTime.of(2018, 3, 20, 10, 0, 0, 0, ZoneId.of("Z"));
@@ -47,29 +47,29 @@ class ExtrapolatorTest {
 
     @Test
     void should_support_environment() {
-        System.setProperty("FASIT_ENVIRONMENT_NAME", "p");
+        System.setProperty("NAIS_CLUSTER_NAME", "prod-fss");
         assertThat(extrapolator.extrapolate(prep("{miljo}"))).isEqualTo(prep(""));
         assertThat(extrapolator.extrapolate(prep("https://tjenester{miljo}.nav.no/test")))
                 .isEqualTo(prep("https://tjenester.nav.no/test"));
 
-        System.setProperty("FASIT_ENVIRONMENT_NAME", "t6");
-        assertThat(extrapolator.extrapolate(prep("{miljo}"))).isEqualTo(prep("-t6"));
+        System.setProperty("NAIS_CLUSTER_NAME", "dev-fss");
+        assertThat(extrapolator.extrapolate(prep("{miljo}"))).isEqualTo(prep(".dev"));
         assertThat(extrapolator.extrapolate(prep("https://tjenester{miljo}.nav.no/test")))
-                .isEqualTo(prep("https://tjenester-t6.nav.no/test"));
+                .isEqualTo(prep("https://tjenester.dev.nav.no/test"));
 
-        System.setProperty("FASIT_ENVIRONMENT_NAME", "q0");
+        System.setProperty("NAIS_CLUSTER_NAME", "dev-gcp");
         assertThat(extrapolator.extrapolate(prep("https://blee{miljo}.nav.no/test")))
-                .isEqualTo(prep("https://blee-q.nav.no/test"));
+                .isEqualTo(prep("https://blee.dev.nav.no/test"));
 
 
-        System.setProperty("FASIT_ENVIRONMENT_NAME", "q");
+        System.setProperty("NAIS_CLUSTER_NAME", "prod-gcp");
         assertThat(extrapolator.extrapolate(prep("https://blee{miljo}.nav.no/test")))
-                .isEqualTo(prep("https://blee-q.nav.no/test"));
+                .isEqualTo(prep("https://blee.nav.no/test"));
     }
 
     @Test
     void should_handle_null_strings() {
-        assertThat(extrapolator.extrapolate(null)).isEqualTo(null);
+        assertThat(extrapolator.extrapolate(null)).isNull();
     }
 
     private static String prep(String s) {
