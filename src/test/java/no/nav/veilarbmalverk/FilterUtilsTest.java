@@ -6,19 +6,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
-import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 class FilterUtilsTest {
     @Test
-    public void should_match_single() {
-        assertThat(lagPredicate("fraDato", "{now}").test(lagMap("fraDato", "{now}"))).isTrue();
-        assertThat(lagPredicate("fraDato", "{now}").test(lagMap("fraDato", "{not_now}"))).isFalse();
-        assertThat(lagPredicate("type", "EGEN").test(lagMap("type", "EGEN"))).isTrue();
-        assertThat(lagPredicate("type", "SOKEAVTALE").test(lagMap("type", "SOKEAVTALE"))).isTrue();
-        assertThat(lagPredicate("type", 0).test(lagMap("type", 0))).isTrue();
-        assertThat(lagPredicate("type", "EGEN").test(lagMap("type", "EGEN", "fraDato", "skjer"))).isTrue();
-        assertThat(lagPredicate("type", "EGEN").test(lagMap("unknown", "EGENS", "other", "value"))).isFalse();
-        assertThat(lagPredicate("type", "EGEN").test(lagMap("type", "EGENS", "other", "value"))).isFalse();
+    void should_match_single() {
+        assertTrue(lagPredicate("fraDato", "{now}").test(lagMap("fraDato", "{now}")));
+        assertFalse(lagPredicate("fraDato", "{now}").test(lagMap("fraDato", "{not_now}")));
+        assertTrue(lagPredicate("type", "EGEN").test(lagMap("type", "EGEN")));
+        assertTrue(lagPredicate("type", "SOKEAVTALE").test(lagMap("type", "SOKEAVTALE")));
+        assertTrue(lagPredicate("type", 0).test(lagMap("type", 0)));
+        assertTrue(lagPredicate("type", "EGEN").test(lagMap("type", "EGEN", "fraDato", "skjer")));
+        assertFalse(lagPredicate("type", "EGEN").test(lagMap("unknown", "EGENS", "other", "value")));
+        assertFalse(lagPredicate("type", "EGEN").test(lagMap("type", "EGENS", "other", "value")));
     }
 
     private Map<String, Object> lagMap(String key, Object value) {

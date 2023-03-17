@@ -1,17 +1,18 @@
 package no.nav.veilarbmalverk;
 
-import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 
-public class TemplateLoaderTest {
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class TemplateLoaderTest {
 
     private static boolean isPresent(Object ob){
         return ob != null;
     }
 
     @Test
-    public void should_read_file_into_class() {
+    void should_read_file_into_class() {
         var cvAktivitet = TemplateLoader.get("cv_jobbprofil_aktivitet");
 
         assertTrue(cvAktivitet.isPresent());
@@ -21,14 +22,14 @@ public class TemplateLoaderTest {
     }
 
     @Test
-    public void should_give_option_none_if_it_doesnt_exist() {
+    void should_give_option_none_if_it_doesnt_exist() {
         var cvAktivitet = TemplateLoader.get("fake-task");
 
         assertTrue(cvAktivitet.isEmpty());
     }
 
     @Test
-    public void should_give_option_none_if_marshalling_fails() {
+    void should_give_option_none_if_marshalling_fails() {
         var cvAktivitet = TemplateLoader.get("test_cv_aktivitet");
 
         assertTrue(cvAktivitet.isEmpty());

@@ -15,13 +15,13 @@ class ExtrapolatorTest {
     private final Extrapolator extrapolator = new Extrapolator(clock);
 
     @Test
-    public void should_extrapolate_multiple() {
+    void should_extrapolate_multiple() {
         assertThat(extrapolator.extrapolate("DATA {now+12t} BETWEEN { now + 1d } VARS"))
                 .isEqualTo("DATA 2018-03-20T22:00:00.000Z BETWEEN 2018-03-21T10:00:00.000Z VARS");
     }
 
     @Test
-    public void should_extrapolate_now() {
+    void should_extrapolate_now() {
         assertThat(extrapolator.extrapolate(prep("{now}"))).isEqualTo(prep("2018-03-20T10:00:00.000Z"));
         assertThat(extrapolator.extrapolate(prep("{now }"))).isEqualTo(prep("2018-03-20T10:00:00.000Z"));
         assertThat(extrapolator.extrapolate(prep("{ now}"))).isEqualTo(prep("2018-03-20T10:00:00.000Z"));
@@ -29,7 +29,7 @@ class ExtrapolatorTest {
     }
 
     @Test
-    public void should_force_zulu_time() {
+    void should_force_zulu_time() {
         ZonedDateTime offsetNow = ZonedDateTime.of(2018, 3, 20, 10, 0, 0, 0, ZoneId.of("+1"));
         Clock offsetClock = Clock.fixed(offsetNow.toInstant(), offsetNow.getZone());
         Extrapolator offsetExtrapolator = new Extrapolator(offsetClock);
