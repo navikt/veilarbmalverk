@@ -1,4 +1,5 @@
 name: Test
+run-name: Test PR ${{ github.event.pull_request.title }} by @${{ github.actor }}
 on:
   pull_request:
     types: [ opened, synchronize, reopened ]

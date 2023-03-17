@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static no.nav.common.utils.EnvironmentUtils.getOptionalProperty;
+import static no.nav.common.utils.EnvironmentUtils.isDevelopment;
 import static no.nav.veilarbmalverk.TimeUtils.ISO8601;
 
 public class Extrapolator {
@@ -37,21 +37,12 @@ public class Extrapolator {
     }
 
     private String miljo(String dontCare) {
-        String miljo = getOptionalProperty("FASIT_ENVIRONMENT_NAME", "miljo").orElse("");
-        if (miljo.equals("")) {
+        if (isDevelopment().isPresent() && isDevelopment().get()) {
+            return ".dev";
+
+        } else {
             return "";
         }
-
-        if (miljo.equals("p")) {
-            return "";
-        }
-
-        if (miljo.equals("q0")) {
-            return "-q";
-        }
-
-
-        return "-" + miljo;
     }
 
     public String extrapolate(String s) {

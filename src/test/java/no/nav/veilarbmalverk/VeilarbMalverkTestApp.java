@@ -1,9 +1,9 @@
 package no.nav.veilarbmalverk;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+//@SpringBootApplication
+// Spring boot test tillater ikke at det er flere @SpringBootApplication, så denne må utkommenteres ved behov.
 public class VeilarbMalverkTestApp {
 
     public static void main(String[] args) {

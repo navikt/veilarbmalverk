@@ -1,4 +1,6 @@
 name: Deploy branch to dev
+run-name: Deploy feature branch ${{ github.ref_name }} by @${{ github.actor }}
+
 on:
   workflow_dispatch:
 
@@ -50,5 +52,5 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-fss
-          RESOURCE: nais-q.yaml
+          RESOURCE: nais-dev.yaml
           VAR: version=${{ env.IMAGE_TAG }}
