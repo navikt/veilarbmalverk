@@ -1,4 +1,5 @@
 name: Test
+run-name: Test feature branch ${{ github.ref_name }} by @${{ github.actor }}
 on:
   pull_request:
     types: [ opened, synchronize, reopened ]
