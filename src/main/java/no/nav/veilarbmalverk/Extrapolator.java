@@ -38,7 +38,7 @@ public class Extrapolator {
 
     private String miljo(String dontCare) {
         if (isDevelopment().isPresent() && isDevelopment().get()) {
-            return "intern.dev";
+            return ".intern.dev";
 
         } else {
             return "";
