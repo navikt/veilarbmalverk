@@ -53,13 +53,13 @@ class ExtrapolatorTest {
                 .isEqualTo(prep("https://tjenester.nav.no/test"));
 
         System.setProperty("NAIS_CLUSTER_NAME", "dev-fss");
-        assertThat(extrapolator.extrapolate(prep("{miljo}"))).isEqualTo(prep(".dev"));
+        assertThat(extrapolator.extrapolate(prep("{miljo}"))).isEqualTo(prep(".intern.dev"));
         assertThat(extrapolator.extrapolate(prep("https://tjenester{miljo}.nav.no/test")))
-                .isEqualTo(prep("https://tjenester.dev.nav.no/test"));
+                .isEqualTo(prep("https://tjenester.intern.dev.nav.no/test"));
 
         System.setProperty("NAIS_CLUSTER_NAME", "dev-gcp");
         assertThat(extrapolator.extrapolate(prep("https://blee{miljo}.nav.no/test")))
-                .isEqualTo(prep("https://blee.dev.nav.no/test"));
+                .isEqualTo(prep("https://blee.intern.dev.nav.no/test"));
 
 
         System.setProperty("NAIS_CLUSTER_NAME", "prod-gcp");
