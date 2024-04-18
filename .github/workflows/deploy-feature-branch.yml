@@ -4,6 +4,10 @@ run-name: Deploy feature branch ${{ github.ref_name }} by @${{ github.actor }}
 on:
   workflow_dispatch:
 
+permissions:
+  packages: write
+  contents: write
+
 env:
   IMAGE_TAG: ${{ github.sha }}
   IMAGE: ghcr.io/${{ github.repository }}/veilarbmalverk
