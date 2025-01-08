@@ -40,7 +40,7 @@ spec:
         mountPath: /var/run/secrets/nais.io/vault
   env:
     - name: lenke
-      value: www.nav.no/min-cv
+      value: https://www.nav.no/min-cv
   accessPolicy:
     inbound:
       rules:
