@@ -42,8 +42,6 @@ spec:
   env:
     - name: miljo
       value: q1
-    - name: lenke
-      value: https://www.ansatt.dev.nav.no/min-cv
   accessPolicy:
     inbound:
       rules:

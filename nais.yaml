@@ -38,9 +38,6 @@ spec:
     paths:
       - kvPath: /apikey/appdynamics/prod
         mountPath: /var/run/secrets/nais.io/vault
-  env:
-    - name: lenke
-      value: https://www.nav.no/min-cv
   accessPolicy:
     inbound:
       rules:
