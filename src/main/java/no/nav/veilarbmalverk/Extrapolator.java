@@ -17,7 +17,8 @@ public class Extrapolator {
     private final Map<Predicate<String>, Function<String, String>> rules = Map.of(
             regexPredicate(TimeUtils.pattern), this::relativeTime,
             equalsPredicate("now"), this::now,
-            equalsPredicate("miljo"), this::miljo
+            equalsPredicate("miljo"), this::miljo,
+            equalsPredicate("lenke"), this::lenke
     );
 
     public Extrapolator() {
@@ -36,10 +37,17 @@ public class Extrapolator {
         return ISO8601.format(Instant.now(clock));
     }
 
+    private String lenke(String dontCare) {
+        if (isDevelopment().isPresent() && isDevelopment().get()) {
+            return "https://www.ansatt.dev.nav.no/min-cv";
+        } else {
+            return "https://www.nav.no/min-cv";
+        }
+    }
+
     private String miljo(String dontCare) {
         if (isDevelopment().isPresent() && isDevelopment().get()) {
             return ".intern.dev";
-
         } else {
             return "";
         }
