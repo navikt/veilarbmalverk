@@ -6,7 +6,7 @@ metadata:
   labels:
     team: pto
 spec:
-  image: ghcr.io/navikt/veilarbmalverk/veilarbmalverk:{{version}}
+  image: {{image}}
   ingresses:
     - https://veilarbmalverk-q1.nais.adeo.no
     - https://app-q1.adeo.no/veilarbmalverk
