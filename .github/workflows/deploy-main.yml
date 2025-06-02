@@ -65,7 +65,6 @@ jobs:
       - name: Deploy application
         uses: nais/deploy/actions/deploy@v2
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-fss
           RESOURCE: nais-dev.yaml
           VAR: version=${{ env.IMAGE_TAG }}
@@ -80,7 +79,6 @@ jobs:
       - name: Deploy application
         uses: nais/deploy/actions/deploy@v2
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: prod-fss
           RESOURCE: nais.yaml
           VAR: version=${{ env.IMAGE_TAG }}
