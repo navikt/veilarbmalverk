@@ -47,6 +47,9 @@ spec:
         - application: veilarbdirigent
           namespace: pto
           cluster: prod-fss
+        - application: veilarbdirigent
+          namespace: dab
+          cluster: prod-gcp
   azure:
     application:
       enabled: true
