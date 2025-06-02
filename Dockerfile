@@ -4,7 +4,7 @@
 #
 FROM busybox:1.36.1-uclibc as busybox
 
-FROM gcr.io/distroless/java17
+FROM ghcr.io/navikt/poao-baseimages/java:17
 
 COPY --from=busybox /bin/sh /bin/sh
 COPY --from=busybox /bin/printenv /bin/printenv
