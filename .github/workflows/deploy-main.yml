@@ -20,6 +20,8 @@ concurrency:
 jobs:
   test-build-and-push:
     name: Test, build and push
+    permissions:
+      id-token: write # for nais docker-build-push
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
