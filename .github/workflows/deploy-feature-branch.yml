@@ -10,8 +10,6 @@ permissions:
   id-token: write
 
 env:
-  IMAGE_TAG: ${{ github.sha }}
-  IMAGE: ghcr.io/${{ github.repository }}/veilarbmalverk
   PRINT_PAYLOAD: true
 
 concurrency:
