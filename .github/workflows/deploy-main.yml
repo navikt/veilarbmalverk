@@ -17,9 +17,6 @@ concurrency:
 
 jobs:
   test-build-and-push:
-    permissions:
-      contents: read
-      id-token: write
     name: Test, build and push
     permissions:
       packages: write
