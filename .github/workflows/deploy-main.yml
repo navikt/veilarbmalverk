@@ -23,6 +23,7 @@ jobs:
     name: Test, build and push
     permissions:
       packages: write
+      contents: read
       id-token: write # for nais docker-build-push
     runs-on: ubuntu-latest
     outputs:
