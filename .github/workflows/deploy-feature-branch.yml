@@ -4,11 +4,6 @@ run-name: Deploy feature branch ${{ github.ref_name }} by @${{ github.actor }}
 on:
   workflow_dispatch:
 
-permissions:
-  packages: write
-  contents: write
-  id-token: write
-
 env:
   PRINT_PAYLOAD: true
 
@@ -45,8 +40,6 @@ jobs:
   deploy-dev:
     name: Deploy application to dev
     permissions:
-      packages: write
-      contents: read
       id-token: write
     needs: test-build-and-push
     runs-on: ubuntu-latest
