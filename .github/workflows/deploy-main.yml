@@ -17,11 +17,16 @@ concurrency:
 
 jobs:
   test-build-and-push:
+    permissions:
+      contents: read
+      id-token: write
     name: Test, build and push
     permissions:
       packages: write
       id-token: write # for nais docker-build-push
     runs-on: ubuntu-latest
+    outputs:
+      image: ${{ steps.docker-build-push.outputs.image }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -69,15 +74,17 @@ jobs:
     permissions:
       id-token: write
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Deploy application
         uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: prod-fss
           RESOURCE: nais.yaml
-          VAR: version=${{ env.IMAGE_TAG }}
+          VAR: image=${{ needs.test-build-and-push.outputs.image }}
       - name: Slack Notification (deploy failure)
         if: failure()
         uses: rtCamp/action-slack-notify@v2
